@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t amorrissett/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true amorrissett/docker-react npm run test
